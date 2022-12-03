@@ -21,7 +21,7 @@
 
     document.addEventListener('keydown', function (event) {
         keysPressed[event.keyCode] = true;
-        console.log(keysPressed)
+        //console.log(keysPressed)
     })
     document.addEventListener('keyup', function (event) {
         keysPressed[event.keyCode] = false;
@@ -47,8 +47,19 @@
         setLevel(0, enemies);
     }
     function gameLoop (){
-        var speed= keysPressed[16] ? 9 : 1
-        var fspeed= keysPressed[32] ? 9 : 1
+        var speed = 2
+        var fspeed = keysPressed[32] ? 5 : 1
+        if (keysPressed[83] && keysPressed[16]) {
+            speed = 7
+        } else if (keysPressed[83]) {
+            speed = 9
+        }
+        else if (keysPressed[16]) {
+        speed = 5
+        }
+        if (keysPressed[83] && keysPressed[32]) {
+            fspeed = 9
+        }
         if (keysPressed[70] || keysPressed[40]) {
             mage.setAttribute('y', +mage.getAttribute('y') + speed);
         }
@@ -102,7 +113,7 @@
             enemy.setAttributeNS(null, 'cx', position.cx)
             enemy.setAttributeNS(null, 'cy', position.cy)
         }
-        var colors=["blue","red","green","yellow","black","purple","gold","beige","#0FF0F0","#ABCDEF","#BA11E9","#123456","#234567","FFFFFE"];
+        var colors=["deepskyblue","hotpink","green","yellow","black","purple","gold","beige","#0FF0F0","#ABCDEF","#BA11E9","#123456","#234567","FFFFFE"];
     
 
         console.log("color change",colors.length)
