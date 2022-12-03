@@ -4,7 +4,7 @@
         color: brown;
     }
 </style>
-<h1>Evade: Level <span class=lvl>0</span></h1>
+<h1>Evade: Level <span class=lvl>0</span> High Score: <span class=hs>0</span></h1>
 <svg id=board width=750 height=400>
    <rect id=mage x=10 y=200 height=35 width=35 stroke=blue stroke-width=3 fill=black></rect>
   </svg>
@@ -38,6 +38,9 @@
       circ.setAttributeNS(null, 'cy', enemy.cy);
       board.appendChild(circ)
     })
+
+    reset()
+
     function reset () {
         level = 0;
         enemies = createScreen()
@@ -78,8 +81,19 @@
         mage.setAttribute('x', start.x);
         mage.setAttribute('y', start.y);
 
-        for (var el of document.getElementsByClassName('lvl')) {
+        for (let el of document.getElementsByClassName('lvl')) {
           el.innerHTML = level
+        }
+        let hs = +localStorage.getItem('hs')
+        if (level > hs) {
+          localStorage.setItem('hs', level)
+          for (let el of document.getElementsByClassName('hs')) {
+            el.innerHTML = level
+          }
+        } else {
+         for (let el of document.getElementsByClassName('hs')) {
+            el.innerHTML = hs
+          }
         }
 
         let idx = 0;
