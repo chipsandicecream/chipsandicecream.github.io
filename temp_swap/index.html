@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<div id="datastuff">
+<input type="number" value=0 name="number" id="numb"/>
+<label for="unit-select">Choose a unit:</label>
+
+<select name="unit" id="unit-select">
+  <option value="cel">celsius</option>
+  <option value="fah">fahrenheit</option>
+  <option value="kel">kelvin</option>
+
+</select>
+<table>
+    <tbody>
+      <tr>
+        <th scope="row">celsius</th>
+        <td id="cel">0.00</td>
+      </tr>
+      <tr>
+        <th scope="row">fahrenheit</th>
+        <td id="fah">32.00</td>
+      </tr>
+      <tr>
+        <th scope="row">kelvin</th>
+        <td id="kel">273.15</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+  <script>
+document.getElementById("datastuff").addEventListener("change", (ev) => {
+    const input = document.getElementById("numb").value
+    const unit = document.getElementById("unit-select").value
+    let numb = +input
+    
+    if (unit === "fah"){
+      numb = 5*(numb - 32)/9
+    } else if (unit === "kel"){
+      numb = numb - 273.15
+    }
+    //F =	9 5ths K - 459.67
+    //K =	5 9ths (F + 459.67)
+
+    //F =	9 5ths C + 32
+    //C =	5 9ths (F - 32 )
+    
+    //K = C + 273.15
+    //C = K - 273.15
+    document.getElementById("cel").innerText = numb.toFixed(2)
+    document.getElementById("fah").innerText = (9*numb/5 + 32).toFixed(2)
+    document.getElementById("kel").innerText = (numb + 273.15).toFixed(2)
+    document.getElementById("cus").innerText = numb.toFixed(2)
+  
+
+    console.log(input,unit)
+})
+  </script>
