@@ -1,0 +1,81 @@
+<html>
+<body style="background: -webkit-linear-gradient(purple, green);">
+<img id="chicken"style="position:absolute; width: 50px; top: 500px; left: 300px; -webkit-transition:all 0.2s;" src="chicken.png">
+<img id="eggcarton"style="position:absolute; width: 50px; top: 0px; left: 0px; -webkit-transition:all 0.2s;" src="eggcarton.png">
+<img id="eggcartonb"style="position:absolute; width: 50px; top: 0px; left: 200px; -webkit-transition:all 0.2s;" src="eggcartonb.jpg">
+<img id="fryingpanb"style="position:absolute; width: 50px; top: 0px; left: 300px; -webkit-transition:all 0.2s;" src="fryingpanb.png">
+<img id="fryingpan"style="position:absolute; width: 50px; top: 0px; left: 500px; -webkit-transition:all 0.2s;" src="fryingpan.png"> 
+<p id="scoreTB"style="position:absolute;left:50px;color:black; font-size:28; font-family:jokerman">score: 0</p>
+<p id="livesTB"style="position:absolute;right:50px;color:red; font-size:28; font-family:copperplate gothic">lives: 3</p>
+</body>
+<script>
+    console.log("ITWORKS")
+    var score=0,lives=3,chickenX=6,chickenY=10,eggcartonX=8,eggcartonY=0,fryingpanX=5,fryingpanY=0
+    function setLeft(id,x){document.getElementById(id).style.left=x+"px"}
+    function setTop(id,y){document.getElementById(id).style.top=y+"px"}
+    function randomNumber(low,high){return(Math.floor(low+Math.random()*(1+high-low)));}
+    var gameTimer=window.setInterval(update, 200)
+    function update (){
+        moveEggcarton()
+        moveFryingpan()
+        moveFryingpanb()
+        moveEggcartonb()
+    }
+    document.onkeydown=handleKeys;
+    function handleKeys(e){
+        console.log(e.keyCode)
+        if(e.keyCode==37){chickenX--;}
+        if(e.keyCode==39){chickenX++;}
+        setLeft("chicken", chickenX*50);
+        setTop("chicken", chickenY*50);
+    }
+function moveEggcarton(){
+    eggcartonY=eggcartonY+=1;
+    setLeft("eggcarton", eggcartonX*50);
+    setTop("eggcarton", eggcartonY*50);
+    if(eggcartonY>chickenY+3){missedEggcarton();}
+    if((chickenX==eggcartonX) && (chickenY==eggcartonY)){caughtEggcarton();}
+}
+function moveEggcartonb(){
+    eggcartonbY=eggcartonbY+=1;
+    setLeft("eggcartonb", eggcartonbX*50);
+    setTop("eggcartonb", eggcartonbY*50);
+    if(eggcartonbY>chickenY+3){missedEggcarton();}
+    if((chickenX==eggcartonbX) && (chickenY==eggcartonbY)){caughtEggcarton();}
+}
+function moveFryingpan(){
+    fryingpanY=fryingpanY+=1;
+    setLeft("fryingpan", fryingpanX*50);
+    setTop("fryingpan", fryingpanY*50);
+    if(fryingpanY>chickenY+3){missedfryingpan();}
+    if((chickenX==fryingpanX) && (chickenY==fryingpanY)){caughtfryingpan();}
+}
+function missedEggcarton(){
+eggcartonY=0
+eggcartonX=randomNumber(2,16);
+lives--;
+document.getElementById("livesTB").innerText="lives:"+lives
+if(lives==0){gameOver();}
+}
+function caughtEggcarton(){
+    eggcartonY=0
+    eggcartonX=randomNumber(2,16)
+    score++;
+    document.getElementById("scoreTB").innerText="score:"+score;
+}
+function missedfryingpan(){
+fryingpanY=0
+fryingpanX=randomNumber(2,16);
+}
+function caughtfryingpan(){
+    fryingpanY=0
+    fryingpanX=randomNumber(2,16)
+    score--;
+    document.getElementById("scoreTB").innerText="score:"+score;
+}
+function gameOver(){
+    alert("GAME OVER, YOU SCORED:"+score);
+    location.reload();
+}
+</script>
+</html>
