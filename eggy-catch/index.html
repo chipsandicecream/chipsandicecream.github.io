@@ -5,10 +5,12 @@
 <img id="eggcartonb"style="position:absolute; width: 50px; top: 0px; left: 200px; -webkit-transition:all 0.2s;" src="eggcartonb.jpg">
 <img id="fryingpanb"style="position:absolute; width: 50px; top: 0px; left: 300px; -webkit-transition:all 0.2s;" src="fryingpanb.png">
 <img id="fryingpan"style="position:absolute; width: 50px; top: 0px; left: 500px; -webkit-transition:all 0.2s;" src="fryingpan.png"> 
-<p id="scoreTB"style="position:absolute;left:50px;color:black; font-size:28; font-family:jokerman">score: 0</p>
+<p id="scoreTB"style="position:absolute;left:50px;color:black; font-size:28; font-family:jokerman">Score: 0</p>
+<p id="highscore"style="position:absolute;left:65px; top: 45px; color:darkOrange; font-size:28; font-family:cooper">High Score: 0</p>
 <p id="livesTB"style="position:absolute;right:50px;color:red; font-size:28; font-family:copperplate gothic">lives: 3</p>
 </body>
 <script>
+     
     //document.addEventListener('keydown', function (event) {
     //    keysPressed[event.keyCode] = true;
     //console.log(keysPressed);
@@ -24,6 +26,14 @@
         moveFryingpan()
         moveFryingpanb()
         moveEggcartonb()
+        let hs = +localStorage.getItem('hs')
+        if (score > hs) {
+          localStorage.setItem('hs', score)
+          document.getElementById("highscore").innerText="High Score:"+score;
+          
+        } else {
+            document.getElementById("highscore").innerText="High Score:"+hs;
+        }
     }
     document.onkeydown=handleKeys;
 function handleKeys(e){
