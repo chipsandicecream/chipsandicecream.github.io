@@ -26,9 +26,9 @@
         moveFryingpan()
         moveFryingpanb()
         moveEggcartonb()
-        let hs = +localStorage.getItem('hs')
+        let hs = +localStorage.getItem('ehs')
         if (score > hs) {
-          localStorage.setItem('hs', score)
+          localStorage.setItem('ehs', score)
           document.getElementById("highscore").innerText="High Score:"+score;
           
         } else {
