@@ -3,7 +3,6 @@
     #output {font-weight: 100;}
     #grid {font-family: monospace;}
     #grid td {width: 1.5em;height: 1.5em;text-align: center;}
-    .correct{background-color: brown;}
     .hovering{background-color: rgb(82, 212, 255);}
     td.between{background-color: blue;}
     .done{background-color: rgb(0, 190, 0);}
@@ -17,7 +16,7 @@ this is a word search, first figure out the word by looking at your hints (for m
 <table id="grid"></table>
 </main>
 <script> 
-    const wholePuzzle = [
+    const possibilities = [
 
         {hint:"London is de HOOFDSTAD van Engeland.", answer:"capital"},
         {hint:"De klas is in drie groepen VERDEELD.", answer:"split"},
@@ -28,12 +27,12 @@ this is a word search, first figure out the word by looking at your hints (for m
         {hint:"Wij gaan in de vakantie op REIS naar Canada.", answer:"journey"},
         {hint:"Ik kan nooit CONCENTREREN tijdens Frans.", answer:"concentrate"},
         {hint:"Ga jij MEEDOEN aan de basketbaltoernooi.", answer:"participate"},
-    //    {hint:"Ik ben in de race TWINTIGSTE geworden.", answer:"twentieth"},
-    //    {hint:"AARDERIJKSKUNDE is het moeilijkste vak.", answer:"geography"},
-    //    {hint:"Ik GEEF OP. Jij hebt weer gewonnen.", answer:"quit"},
-    //    {hint:"Ik vind de nieuwe TECHNOLOGIE in laptops interresant.", answer:"technology"},
-    //    {hint:"Als ik thuis KLUSJES doe krijg ik wat geld", answer:"chores"},
-    //    {hint:".", answer:""},
+        {hint:"Ik ben in de race TWINTIGSTE geworden.", answer:"twentieth"},
+        {hint:"AARDERIJKSKUNDE is het moeilijkste vak.", answer:"geography"},
+        {hint:"Ik GEEF OP. Jij hebt weer gewonnen.", answer:"quit"},
+        {hint:"Ik vind de nieuwe TECHNOLOGIE in laptops interresant.", answer:"technology"},
+        {hint:"Als ik thuis KLUSJES doe krijg ik wat geld", answer:"chores"},
+        {hint:"Ik ben alweer een SCHRIFT kwijt.", answer:"notebook"},
     //    {hint:".", answer:""},
     //    {hint:".", answer:""},
     //    {hint:".", answer:""},
@@ -70,6 +69,12 @@ this is a word search, first figure out the word by looking at your hints (for m
     //    {hint:".", answer:""},
     //    {hint:".", answer:""},
     ]
+    const wholePuzzle = []
+    for (let i = 0; i < 8; i = i + 1){
+        const idx = Math.floor(Math.random()*possibilities.length)
+        const [q] = possibilities.splice(idx, 1)
+        wholePuzzle.push(q)
+    }
     const puzzle = wholePuzzle[0]
     const guess = document.getElementById("guess") 
     const output = document.getElementById("output")
