@@ -15,6 +15,7 @@ this is a word search, to play first figure out the word by looking at your hint
 <div id="output"> </div>
 <table id="grid"></table>
 </main>
+// While coding this wordsearch I praicticed translating between languages, which was probably the thing I got the most consistantly wrong.
 <script> 
     const possibilities = [
         // capetalized spelled wrong
@@ -33,16 +34,17 @@ this is a word search, to play first figure out the word by looking at your hint
         {hint:"Ik vind de nieuwe TECHNOLOGIE in laptops interresant.", answer:"technology"},
         {hint:"Als ik thuis KLUSJES doe krijg ik wat geld", answer:"chores"},
         {hint:"Ik ben alweer een SCHRIFT kwijt.", answer:"notebook"},
-    //    {hint:".", answer:""},
-    //    {hint:".", answer:""},
-    //    {hint:".", answer:""},
-    //    {hint:".", answer:""},
-    //    {hint:".", answer:""},
-    //    {hint:".", answer:""},
-    //    {hint:".", answer:""},
-    //    {hint:".", answer:""},
-    //    {hint:".", answer:""},
-    //    {hint:".", answer:""},
+    //    {hint:"VOLGENS mijn vriend is er vandaag een SO.", answer:"accordingto"},
+    //    {hint:"GEBEURTENIS.", answer:"event"},
+    //    {hint:"GESPANNEN.", answer:"strung"},
+        {hint:"Ik RISKEER naar buiten gaan zonder jas.", answer:"risk"},
+        {hint:"Die film was echt GEWELDIG.", answer:"awesome"},
+        {hint:"Die toets was echt MOEILIJK.", answer:"difficult"},
+        {hint:"Ik hou veel van TONEEL.", answer:"drama"},
+        {hint:"Iedereen vind latijn NUTTELOOS.", answer:"useless"},
+        {hint:".Wiskunde is best NUTTIG", answer:"useful"},
+        {hint:"De CONCIËRGE doet echt alles.", answer:"caretaker"},
+        {hint:"Ik heb een nieuw BUREAU.", answer:"desk"},
     //    {hint:".", answer:""},
     //    {hint:".", answer:""},
     //    {hint:".", answer:""},
@@ -110,7 +112,7 @@ this is a word search, to play first figure out the word by looking at your hint
             const letters = []
             document.querySelectorAll(".between").forEach(function(cell){
                 letters.push(cell.innerHTML)
-            })
+              })
             console.log(letters)
             const ans = letters.join("")
             const rans = letters.reverse().join("")
