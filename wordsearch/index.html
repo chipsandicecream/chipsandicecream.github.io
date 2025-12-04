@@ -4,19 +4,19 @@
     #grid {font-family: monospace;}
     #grid td {width: 1.5em;height: 1.5em;text-align: center;}
     .hovering{background-color: rgb(82, 212, 255);}
-    td.between{background-color: blue;}
+    td.between{background-color: rgb(0, 173, 253);}
     .done{background-color: rgb(0, 190, 0);}
     .found{background-color: rgb(0, 190, 0);}
 </style>
 
 <main>
-this is a word search, to play first figure out the word by looking at your hints. You have to translate the CAPETALIZED from dutch to english your hints are:
-<div id="hint"></div>
+this is a word search, to play first figure out the word by looking at your hints.  You have to translate the CAPITALIZED from dutch to english Then you click the word in the wordsearch. your hints are:
+<ul id="hint"></ul>
 <div id="output"> </div>
 <table id="grid"></table>
 </main>
-// While coding this wordsearch I praicticed translating between languages, which was probably the thing I got the most consistantly wrong.
 <script> 
+// While coding this wordsearch I praicticed translating between languages, which was probably the thing I got the most consistantly wrong.
     const possibilities = [
         // capetalized spelled wrong
         {hint:"London is de HOOFDSTAD van Engeland.", answer:"capital"},
@@ -34,7 +34,7 @@ this is a word search, to play first figure out the word by looking at your hint
         {hint:"Ik vind de nieuwe TECHNOLOGIE in laptops interresant.", answer:"technology"},
         {hint:"Als ik thuis KLUSJES doe krijg ik wat geld", answer:"chores"},
         {hint:"Ik ben alweer een SCHRIFT kwijt.", answer:"notebook"},
-    //    {hint:"VOLGENS mijn vriend is er vandaag een SO.", answer:"accordingto"},
+        {hint:"VOLGENS mijn vriend is er vandaag een SO.", answer:"accordingto"},
     //    {hint:"GEBEURTENIS.", answer:"event"},
     //    {hint:"GESPANNEN.", answer:"strung"},
         {hint:"Ik RISKEER naar buiten gaan zonder jas.", answer:"risk"},
@@ -82,7 +82,7 @@ this is a word search, to play first figure out the word by looking at your hint
     const output = document.getElementById("output")
     const hint = document.getElementById("hint")
     hint.innerHTML = wholePuzzle.map(function (p){
-        return `<div class="hint" data-ans="${p.answer}">`+p.hint+"</div>"
+        return `<li class="hint" data-ans="${p.answer}">`+p.hint+"</li>"
     }).join("")
     const grid = document.getElementById("grid")
     const size = 16
