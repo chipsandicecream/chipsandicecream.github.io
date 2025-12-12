@@ -1,4 +1,4 @@
 While coding this wordsearch I practiced translating between languages,
 which was probably the thing I got the most consistantly wrong.
 I tend to get words wrong when I am unsure what the dutch translation is, or when I haven't used the word recently.
-I learned more words from the chapter and reminded myself of ones that I already knew
+I learned more words from the chapter and reminded myself of ones that I already knew. Sometimes I do not remember the translation of a word even if I knew the word, for instance I didn't know that essential translated to belangrijk even though I knew both the word essential and the word belangrijk 
